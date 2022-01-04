@@ -2,7 +2,6 @@
 ## Subscription
 通过反射DLL注入、Win API、C#、以及底层实现NetUserAdd方式实现BypassAV进行增加用户的功能,实现Cobalt Strike插件化
 
-
 ## Usage
 结合cna使用,直接load cna然后选对应的UserAdd方式即可
 
@@ -12,7 +11,7 @@
 
 ## Note
 
-**暂时先只支持x64**
+**昨天实现相关工具时还能随便绕360,隔天写完插件发现已经会被检测了....暂时先只支持x64**
 
 主要实现了四种方式：
 - 1. 通过编写反射DLL实现API(NetUserAdd)添加用户
