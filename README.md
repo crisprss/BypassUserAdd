@@ -5,7 +5,10 @@
 
 ## Usage
 结合cna使用,直接load cna然后选对应的UserAdd方式即可
-![](https://md.byr.ac.cn/uploads/upload_c075492f5b1e7340f3f742356f5c7797.png)
+
+![](https://github.com/crisprss/BypassUserAdd/blob/master/image.png)
+
+![](https://github.com/crisprss/BypassUserAdd/blob/master/image.png)
 
 ## Note
 
