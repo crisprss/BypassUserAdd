@@ -8,7 +8,7 @@
 
 ![](https://github.com/crisprss/BypassUserAdd/blob/master/image.png)
 
-![](https://github.com/crisprss/BypassUserAdd/blob/master/image.png)
+![](https://github.com/crisprss/BypassUserAdd/blob/master/image1.png)
 
 ## Note
 
