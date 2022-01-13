@@ -20,3 +20,4 @@
 - 3. 通过微软提供C#利用活动目录创建用户方式,实现内存调用(execute-assembly)  参考:[https://docs.microsoft.com/zh-cn/troubleshoot/dotnet/csharp/add-user-local-system](https://)
 - 4. 通过上传重写NetUserAdd底层实现添加用户的可执行程序实现添加用户
 
+**使用过程中第2和4种方式设置的用户默认是未启用状态,AV一般不会监控账户启用而会监控账户禁用,因此还需要net user 对应的账户名称 /active:yes**
